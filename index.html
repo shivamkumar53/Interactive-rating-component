@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Interactive rating component</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,800;1,800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset default margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Set the background color and font family */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0 15px;
+      background-color: #141418;
+      font-family: 'Overpass', sans-serif;
+    }
+
+    /* Center the content vertically and horizontally */
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Container for the rating component */
+    .rating-container {
+      margin-top: 190px;
+      height: 375px;
+      width: 370px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: linear-gradient(to bottom, #232833, #181f27);
+    }
+
+    /* Content inside the rating container */
+    .rating-content {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Star icon container */
+    .star-icon {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #272f39;
+    }
+
+    /* Container for the heading and description text */
+    .text-content {
+      margin-top: 28px;
+      text-align: left;
+    }
+
+    /* Heading style */
+    h2 {
+      color: #f7f8f9;
+      font-weight: 400;
+      font-size: 24px;
+    }
+
+    /* Paragraph style */
+    p {
+      margin-top: 15px;
+      color: #656a75;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 500;
+    }
+
+    /* Container for the rating numbers */
+    .rating-numbers {
+      display: flex;
+      margin-top: 20px;
+      justify-content: space-between;
+    }
+
+    /* Individual rating number style */
+    .rating-number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 45px;
+      width: 45px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      color: #6b727c;
+      border-radius: 50%;
+      background-color: #272f39;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover effect for rating numbers */
+    .rating-number:hover {
+      color: #141418;
+      background-color: #fd7612;
+    }
+
+    /* Submit button style */
+    .submit-button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 13px 0;
+      border-radius: 40px;
+      outline: none;
+      background: #fd7612;
+      border: 1px solid black;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover effect for the submit button */
+    .submit-button:hover {
+      background-color: #ffffff;
+    }
+
+    /* Container for the result display */
+    .result-display {
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+    /* Container for the result image */
+    .result-image {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Container for the result text */
+    .result-text {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    /* Text for the selected rating */
+    .selected-rating {
+      padding: 12px 0;
+      width: 190px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 30px;
+      background-color: #262e38;
+    }
+
+    .selected-rating h4 {
+      color: #9a562c;
+      font-size: 15px;
+    }
+
+    /* Container for the thank you message */
+    .thank-you-message {
+      margin-top: 30px;
+    }
+
+    /* Footer style */
+    footer {
+      width: 100%;
+      height: 20px;
+      margin-top: 120px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .attribution {
+      font-size: 12px;
+      color: white;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    /* Responsive design adjustments */
+    @media only screen and (max-width: 475px) {
+      .rating-container {
+        border-radius: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="rating-container">
+    <div class="rating-content">
+      <div class="star-icon">
+        <img src="images/icon-star.svg" alt="Star Icon">
+      </div>
+
+      <div class="text-content">
+        <h2>How did we do?</h2>
+        <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+      </div>
+
+      <div class="rating-numbers">
+        <div class="rating-number">1</div>
+        <div class="rating-number">2</div>
+        <div class="rating-number">3</div>
+        <div class="rating-number">4</div>
+        <div class="rating-number">5</div>
+      </div>
+
+      <button class="submit-button" type="submit">SUBMIT</button>
+    </div>
+
+    <div class="result-display">
+      <div class="result-image">
+        <img src="images/illustration-thank-you.svg" alt="Thank You Illustration">
+      </div>
+
+      <div class="result-text">
+        <div class="selected-rating">
+          <!-- Dynamic content goes here -->
+        </div>
+
+        <div class="thank-you-message">
+          <h2>Thank you!</h2>
+          <p>We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </footer>
+
+  <script>
+    let submitButton = document.querySelector('.submit-button');
+    let ratingContent = document.querySelector('.rating-content');
+    let resultDisplay = document.querySelector('.result-display');
+    let selectedRating = ''; // Variable to store the selected rating
+
+    // Function to handle rating selection
+    function handleRatingSelection() {
+      let ratingNumbers = document.querySelectorAll('.rating-number');
+      ratingNumbers.forEach(element => {
+        element.addEventListener('click', () => {
+          // Remove styling from previously selected elements
+          ratingNumbers.forEach(el => {
+            el.style.backgroundColor = ''; // Remove background color
+            el.style.color = ''; // Remove text color
+          });
+
+          // Update selected rating and apply styling to the clicked element
+          selectedRating = element.textContent;
+          element.style.backgroundColor = '#fffefd'; // Highlight color
+          element.style.color = 'black'; // Text color
+        });
+      });
+    }
+
+    handleRatingSelection(); // Initialize rating selection
+
+    // Add event listener to the submit button
+    submitButton.addEventListener('click', () => {
+      if (selectedRating) {
+        ratingContent.style.display = 'none';
+        resultDisplay.style.display = 'block';
+
+        // Create and update the h4 element
+        let ratingText = document.createElement('h4');
+        ratingText.textContent = `You selected ${selectedRating} out of 5`;
+
+        let selectedRatingContainer = document.querySelector('.selected-rating');
+        selectedRatingContainer.innerHTML = ''; // Clear previous content
+        selectedRatingContainer.appendChild(ratingText);
+      } else {
+        // Optional: Handle the case when no rating is selected
+        alert('Please select a rating before clicking the button.');
+      }
+    });
+  </script>
+</body>
+
+</html>
